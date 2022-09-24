@@ -7,7 +7,7 @@
     <table class="table table-bordered table-striped table-hover">
       <thead>
         <tr>
-          <th>#</th>
+          <th>序号</th>
           <th>姓名</th>
           <th>年龄</th>
           <th>头衔</th>
@@ -15,12 +15,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>xxx</td>
-          <td>xxx</td>
-          <td>xxx</td>
-          <td>xxx</td>
-          <td>xxx</td>
+        <tr v-for="item in userlist" :key="item.id">
+          <td>{{item.id }}</td>
+          <td>{{item.name }}</td>
+          <td>{{item.age }}</td>
+          <td>{{item.position }}</td>
+          <td ><a href="#" @click.prevent="toDetail(item.id)">详情</a></td>
         </tr>
       </tbody>
     </table>
@@ -40,7 +40,13 @@ export default {
         { id: 4, name: '赵姬', age: 48, position: '王太后' }
       ]
     }
-  }
+  },
+  methods: {
+    toDetail(id){
+      this.$router.push('/home/userinfo/'+id);
+
+    }
+  },
 }
 </script>
 
